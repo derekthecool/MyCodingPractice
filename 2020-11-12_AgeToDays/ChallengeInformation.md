@@ -33,6 +33,13 @@ io2->end
 
 ### Notes on any special procedure or setup for any of my testing languages
 
+Javascript was the strangest. I needed to import a nodejs module named
+'readline' so that I could read from stdin. This was a good starting
+project.
+
 ## Step 4: Refactoring Code
 
 ### Notes on what I learned from refactoring my code
+
+I didn't find much, I just made a few adjustments so that all the prompts and
+output messages were spelled the same.

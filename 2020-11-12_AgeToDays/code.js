@@ -5,7 +5,7 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
-rl.question("Enter your age in years: ", function(age) {
+rl.question("Enter your age in years: \n", function(age) {
   console.log(`You are ${age * 365} years old`);
   rl.close();
 });
