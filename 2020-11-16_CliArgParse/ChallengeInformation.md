@@ -27,33 +27,31 @@ Helpful flowchart links
 start=>start
 end=>end
 argcheck=>condition: Arg count > 0
-parseargs=>operation: Parse args
+OptionCheck_help=>condition: Help Option Included
+option_help=>inputoutput: Usage
+(-v, --version, Print the apllication version)
+(-h, --help, Print this help message)
+(-p, --print [text], print the text to the screen
+OptionCheck_version=>condition: Version Option Included
+option_version=>inputoutput: Print app version 1.0.0
 
-arg_version=>condition: Version arg found?
-arg_help=>condition: Help arg found?
-arg_print=>condition: Print arg found?
-arg_print_text=>condition: Print command text found?
+OptionCheck_print=>condition: Print option included with valid argument
+option_print=>inputoutput: Print [text] to screen
+option_print_error=>inputoutput: Error no arg included
 
-show_version=>inputoutput: Print version 1.0.0
-show_help=>inputoutput: Usage:
-(-h, --help, shows this help and exits)
-(-v, --version, prints version and exits)
-(-p, --print [text], Text to print to screen)
-check_printtext=>condition: Text included with print command?
-show_print_argmissing=>inputoutput: You did not enter any text with the (-p, --print) option
-show_print=>inputouput: You printed [text] with the print command
 
 start->argcheck
-argcheck(yes)->parseargs
-argcheck(no)->show_help->end
+argcheck(yes)->OptionCheck_help
+argcheck(no)->option_help->end
 
-parseargs->arg_version
-arg_version(yes)->show_version->end
-arg_version(no)->arg_help
-arg_help(yes)->show_help->end
-arg_help(no)->arg_print
-arg_print(yes)->check_printtext
-arg_print(no)->end
+OptionCheck_help(yes)->option_help->end
+OptionCheck_help(no)->OptionCheck_version
+
+OptionCheck_version(yes)->option_version->end
+OptionCheck_version(no)->OptionCheck_print
+
+OptionCheck_print(yes)->option_print->end
+OptionCheck_print(no)->option_print_error->end
 ```
 
 ## Step 3: Solve With Programming Languages
